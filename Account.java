@@ -1,9 +1,8 @@
 
 /**
- * Write a description of class Account here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Muhammad Taqiyuddin 
+ * @version 19/02/2016
  */
 public class Account
 {

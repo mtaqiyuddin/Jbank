@@ -1,13 +1,12 @@
 
 /**
- * Write a description of class Customer here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Muhammad Taqiyuddin 
+ * @version 19/02/2016
  */
 public class Customer
 {
-    // instance variables - replace the example below with your own
+    // instance variables
     private String cityAddress,dateOfBirth,email,firstName,lastName,streetAddress,phoneNumber,zipOrPostalCode;
     private int custId,numberOfCurrentAccounts;
     private Account accounts = new Account();
