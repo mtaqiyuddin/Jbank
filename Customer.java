@@ -17,8 +17,11 @@ public class Customer
     }
     public Customer(String firstName, String lastName, String dateOfBirth, int custId){
     }
-    private String getAddress() {
-        return null;
+    public String getName() {
+        return firstName + "," + lastName;
+    }
+    public String getAddress() {
+        return streetAddress + "," + cityAddress + "," + zipOrPostalCode;
     }
     public Account getAccount() {
         return accounts;
@@ -32,20 +35,26 @@ public class Customer
     private String getCustomerName() {
         return null;
     }
+    public void setAccount(Account accounts) {
+        this.accounts = accounts;
+    }
     public int getNumOfAccounts() {
         return 0;
     }
     private String getPhoneNumber() {
         return null;
     }
-    private void setAddress(String street, String city, String code) {
-        return;
+    public void setAddress(String street, String city, String code) {
+        cityAddress = city;
+        zipOrPostalCode = code;
+        streetAddress = street;
     }
     private void setEmail(String emailAddress) {
         return;
     }
-    private void setCustomerName(String lname, String cfname) {
-        return;
+    public void setName(String lname, String fname) {
+        firstName = fname;
+        lastName = lname;
     }
     private void setPhoneNumber(String phoneNum) {
         return;
