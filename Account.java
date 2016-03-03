@@ -23,6 +23,8 @@ public class Account
      * @param amount Jumlah Nilai
      */
     public Account(char type, double amount) {
+        acctType = type;
+        balance = amount;
     }
     
     /**

@@ -7,12 +7,14 @@ import java.util.regex.*;
 public class Customer
 {
     // instance variables
-    private String cityAddress,dateOfBirth,email,firstName,lastName,streetAddress,phoneNumber,zipOrPostalCode;
-    private int custId,numberOfCurrentAccounts;
-    private Account accounts = new Account();
-    private Pattern pattern;
-    private Matcher matcher;
-    private static final String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+    public String cityAddress,email,firstName,lastName,streetAddress,phoneNumber,zipOrPostalCode;
+    public String dateOfBirth;
+    public int custId;
+    public int numberOfCurrentAccounts;
+    public Account accounts = new Account();
+    public Pattern pattern;
+    public Matcher matcher;
+    public static final String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
         + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     
     /**
@@ -25,11 +27,21 @@ public class Customer
      * Method Constructor Customer
      * @param fname Nama Panjang
      * @param lname Nama Belakang
-     * @param dob Tanggal Lahir
+ 
      */
-    public Customer(String fname, String lname, String dob) {
+    public Customer(String fname, String lname) {
+        this(fname,lname,"none");
     }
     
+    /**
+     * Method Constructor Customer
+     * @param fname Nama Panjang
+     * @param lname Nama Belakang
+     * @param dob Tanggal Lahir
+     */
+    public Customer(String firstName, String lastName, String DateOfBirth) {
+    }
+   
     /**
      * Method Constructor Customer
      * @param firstName Nama Panjang
@@ -38,6 +50,10 @@ public class Customer
      * @param custID ID customer
      */
     public Customer(String firstName, String lastName, String dateOfBirth, int custId){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.custId = Bank.getNextID();
     }
     
     /**
@@ -46,6 +62,14 @@ public class Customer
      */
     public String getName() {
         return lastName + "," + firstName;
+    }
+    
+    /**
+     * Method setCustID
+     * @return id Customer ID
+     */
+    public void setCustID(int id) {
+        custId = id;
     }
     
     /**

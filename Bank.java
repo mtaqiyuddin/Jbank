@@ -9,18 +9,39 @@ public class Bank
     // instance variables - replace the example below with your own
     private static double creditInterestRate, investmentInterestRate, premiumInterestRate;
     private static int lastCustID, nextCustID, numOfCurrentCustomer, nextID;
-    public static int maxNumOfCustomers =20 ;
     private String closeTime, phone, startTime;
-    public String website, bankName = "JBANK", bankAddress = "1234 JavaStreet, AnyCity, ThisState, 34567";
+    public String website;
+    public static final int MAX_CUSTOMERS =20 ;
+    public static final String BANK_NAME = "JBANK", BANK_ADDRESS = "1234 JavaStreet, AnyCity, ThisState, 34567";
+    
+    /*Constructor objek class Bank*/
+    private Bank(){
+        //inisiasi
+    }
     
     /**
      * Method getAddress
      */
-    public static String getAddress()
+    /*public static String getAddress()
     {
         return null;
-    }
+    }*/
+        
+    /**
+     * Method getMaxCustomers
+     */
+    /*public static int getMaxCustomers()
+    {
+        return MAX_CUSTOMERS;
+    }*/
     
+    /**
+     * Method getName
+     */
+    /*public static String getName()
+    {
+        return null;
+    }*/
     /**
      * Method getCreditRate
      */
@@ -50,15 +71,7 @@ public class Bank
      */
     public static int getLastID()
     {
-        return 0;
-    }
-    
-    /**
-     * Method getMaxCustomers
-     */
-    public static int getMaxCustomers()
-    {
-        return 0;
+        return lastCustID;
     }
     
     /**
@@ -70,28 +83,26 @@ public class Bank
     }
     
     /**
-     * Method getName
-     */
-    public static String getName()
-    {
-        return null;
-    }
-    
-    /**
      * Method getNextID
      */
     public static int getNextID() {
         if (nextCustID == 0)  {
             lastCustID = 1000;
             nextCustID = 1000;
+            numOfCurrentCustomer = 1;
+            return nextCustID;
+        }
+        else if (numOfCurrentCustomer == MAX_CUSTOMERS){
             return nextCustID;
         }
         else {
             lastCustID = nextCustID;
             nextCustID = lastCustID + 1;
+            numOfCurrentCustomer++;
             return nextCustID;
         }
     }
+    
     public static String getWebsite() {
         return null;
     }
