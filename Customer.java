@@ -1,4 +1,5 @@
 import java.util.regex.*;
+import java.util.Date;
 /**
  * class Customer menghasilkan object Customer dan terdiri dari beberapa method
  * @author Muhammad Taqiyuddin 
@@ -40,6 +41,9 @@ public class Customer
      * @param dob Tanggal Lahir
      */
     public Customer(String firstName, String lastName, String DateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
     }
    
     /**
