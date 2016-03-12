@@ -1,5 +1,8 @@
 import java.util.regex.*;
-import java.util.Date;
+import java.util.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 /**
  * class Customer menghasilkan object Customer dan terdiri dari beberapa method
  * @author Muhammad Taqiyuddin 
@@ -9,7 +12,7 @@ public class Customer
 {
     // instance variables
     public String cityAddress,email,firstName,lastName,streetAddress,phoneNumber,zipOrPostalCode;
-    public String dateOfBirth;
+    public Date dateOfBirth;
     public int custId;
     public int numberOfCurrentAccounts;
     public Account accounts = new Account();
@@ -28,19 +31,18 @@ public class Customer
      * Method Constructor Customer
      * @param fname Nama Panjang
      * @param lname Nama Belakang
- 
      */
     public Customer(String fname, String lname) {
-        this(fname,lname,"none");
+        this(fname,lname,null);
     }
     
     /**
      * Method Constructor Customer
      * @param fname Nama Panjang
      * @param lname Nama Belakang
-     * @param dob Tanggal Lahir
+     * @param dateOfBirth Tanggal Lahir
      */
-    public Customer(String firstName, String lastName, String DateOfBirth) {
+    public Customer(String firstName, String lastName, Date dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -53,7 +55,7 @@ public class Customer
      * @param dateOfBirth Tanggal Lahir
      * @param custID ID customer
      */
-    public Customer(String firstName, String lastName, String dateOfBirth, int custId){
+    public Customer(String firstName, String lastName, Date dateOfBirth, int custId){
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -179,5 +181,13 @@ public class Customer
      */
     public void setPhoneNumber(String phoneNum) {
         phoneNumber = phoneNum;
+    }
+    
+    /**
+     * Method getDOB mendapatkan tanggal lahir 
+     * @return tanggal lahir
+     */
+    public Date getDOB(){
+       return dateOfBirth;
     }
 }

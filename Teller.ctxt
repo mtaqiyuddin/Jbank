@@ -5,4 +5,6 @@ comment0.text=\r\n\ Main\ method\ dari\ class\ Teller\ membuat\ object\ meng-ass
 comment1.params=
 comment1.target=Teller()
 comment1.text=\r\n\ Constructor\ Teller\r\n
-numComments=2
+comment2.params=balance\ rate\ compound\ period
+comment2.target=double\ futureValue(double,\ double,\ double,\ double)
+numComments=3

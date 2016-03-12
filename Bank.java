@@ -1,4 +1,7 @@
-
+import java.text.*;
+import java.util.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 /**
  * Class bank
  * @author Muhammad Taqiyuddin 
@@ -8,8 +11,10 @@ public class Bank
 {
     // instance variables - replace the example below with your own
     private static double creditInterestRate, investmentInterestRate, premiumInterestRate;
-    private static int lastCustID, nextCustID, numOfCurrentCustomer, nextID;
-    private String closeTime, phone, startTime;
+    private static BigDecimal creditRate, investmentRate, premiRate;
+    public static int lastCustID, nextCustID, numOfCurrentCustomer, nextID;
+    private String phone;
+    private static Date closeTime, startTime;
     public String website;
     public static final int MAX_CUSTOMERS =20 ;
     public static final String BANK_NAME = "JBANK", BANK_ADDRESS = "1234 JavaStreet, AnyCity, ThisState, 34567";
@@ -47,7 +52,7 @@ public class Bank
      */
     public static double getCreditRate()
     {
-        return 0;
+        return creditInterestRate;
     }
     
     /**
@@ -55,7 +60,14 @@ public class Bank
      */
     public static double getInvestmentRate()
     {
-        return 0;
+        return investmentInterestRate;
+    }
+    
+    /**
+     * Method getPremiumRate
+     */
+    public static double getPremiumRate() {
+        return premiumInterestRate;
     }
     
      /**
@@ -65,6 +77,39 @@ public class Bank
     {
         return null;
     }
+    
+    /**
+    * Method getStartTime
+    * @return waktu mulai
+    */
+    public static Date getStartTime (){
+        return startTime;
+    }
+    
+    /**
+    * Method setStartTime
+    * @param strTime waktu mulai
+    */
+    public static void setStartTime (Date start){   
+        startTime = start;
+    }
+    
+    /**
+    * Method getCloseTime
+    * @return waktu tutup
+    */
+    public static Date getCloseTime()
+    {
+       return closeTime;
+    }
+    
+    /**
+    * Method getStartTime
+    * @param waktu tutup
+    */
+   public static void setCloseTime (Date close){
+       closeTime = close;
+   }
     
     /**
      * Method getLastID
@@ -105,9 +150,6 @@ public class Bank
     
     public static String getWebsite() {
         return null;
-    }
-    public static double getPremiumRate() {
-        return 0;
     }
     
     /**
