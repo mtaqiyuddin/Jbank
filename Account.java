@@ -22,9 +22,17 @@ public class Account
      * @param type Tipe dari Akun
      * @param amount Jumlah Nilai
      */
-    public Account(char type, double amount) {
+    public Account(Customer cust, double amount, char type) {
         acctType = type;
         balance = amount;
+        id = cust.getCustomerId()+ "" + type;
+    }
+    
+    public String toString() {
+        System.out.println("Account Type  :   " + acctType);
+        System.out.println("ID            :   " + id);
+        System.out.println("Balance       :   " + balance);
+        return "";
     }
     
     /**

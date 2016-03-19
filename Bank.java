@@ -2,6 +2,8 @@ import java.text.*;
 import java.util.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.io.*;
+import java.text.SimpleDateFormat;
 /**
  * Class bank
  * @author Muhammad Taqiyuddin 
@@ -16,12 +18,57 @@ public class Bank
     private String phone;
     private static Date closeTime, startTime;
     public String website;
-    public static final int MAX_CUSTOMERS =20 ;
+    public static final int MAX_CUSTOMERS;
     public static final String BANK_NAME = "JBANK", BANK_ADDRESS = "1234 JavaStreet, AnyCity, ThisState, 34567";
+    static {
+        Scanner s = new Scanner(System.in);
+        System.out.print("\nMasukkan jumlah maksimum customer: ");
+        int x= s.nextInt();
+        MAX_CUSTOMERS = x;
+    }
+    
+    private static Customer[] Customers = new Customer[MAX_CUSTOMERS];
     
     /*Constructor objek class Bank*/
-    private Bank(){
+    public Bank(){
         //inisiasi
+    }
+    
+    /**
+     * Method addCustomer Menambahkan objek customer ke array Customers
+     * @param customer Objek dari kelas Customer
+     * @return True or False
+     */
+    public static boolean addCustomer (Customer customer) {
+        for (int i = 0; i < Customers.length; i++){
+            if (Customers[i] == null) {
+                Customers[i] = customer;
+                return true;
+            } 
+        }
+        return false;
+    }
+    
+    /**
+     * Method getCustomer Mendapatkan objek customer berdasarkan ID
+     * @param custID Customer ID
+     * @return Objek Customer atau Null
+     */
+    public static Customer getCustomer (int custID) {
+        for (int i = 0; i < Customers.length; i++){
+            if (Customers[i].getCustomerId() == custID) {
+                return Customers[i];
+            } 
+        }
+        return null;
+    }
+    
+    /**
+     * Method getMaxNumOfCustomers Mendapatkan jumlah maksimum customer
+     * @return Jumlah maksimum customer
+     */
+    public static int getMaxNumOfCustomers () {
+        return MAX_CUSTOMERS;
     }
     
     /**
@@ -75,7 +122,24 @@ public class Bank
      */
     public static String getHoursOfOperation()
     {
-        return null;
+        SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
+        return ft.format(startTime) + " TO " + ft.format(closeTime);
+    }
+    
+    /**
+     * Method setHoursOfOperation Menentukan waktu operasi
+     * @return True atau False
+     */
+    public boolean setHoursOfOperation(Date startTime, Date closeTime) {
+        if (this.startTime != null || this.closeTime != null) {
+            startTime = this.startTime;
+            closeTime = this.closeTime;
+            return true;
+        } else {
+            startTime = this.startTime;
+            closeTime = this.closeTime;
+            return false;
+        }
     }
     
     /**
@@ -88,10 +152,11 @@ public class Bank
     
     /**
     * Method setStartTime
-    * @param strTime waktu mulai
+    * @param hour Satuan Jam
+    * @param min Satuan Menit
     */
-    public static void setStartTime (Date start){   
-        startTime = start;
+    public static void setStartTime (int hour, int min){   
+        startTime = new GregorianCalendar(0,0,0,hour, min).getTime();
     }
     
     /**
@@ -105,10 +170,11 @@ public class Bank
     
     /**
     * Method getStartTime
-    * @param waktu tutup
+    * @param hour Satuan Jam
+    * @param min Satuan Menit
     */
-   public static void setCloseTime (Date close){
-       closeTime = close;
+   public static void setCloseTime (int hour, int min){
+       closeTime = new GregorianCalendar(0,0,0,hour, min).getTime();
    }
     
     /**
@@ -178,5 +244,11 @@ public class Bank
      * @param rate Nilai Rasio Kredit
      */
     public static void setPremium(double rate) {
+    }
+    
+    public void printAllCustomers() {
+        for (Customer c : Customers) {
+            System.out.println(c);
+        }
     }
 }

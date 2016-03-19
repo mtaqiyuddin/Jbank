@@ -14,8 +14,10 @@ public class Customer
     public String cityAddress,email,firstName,lastName,streetAddress,phoneNumber,zipOrPostalCode;
     public Date dateOfBirth;
     public int custId;
+    private Account[] accounts = new Account[4];
+    private int numAccount;
     public int numberOfCurrentAccounts;
-    public Account accounts = new Account();
+    private int indexArrayAccount = 0;
     public Pattern pattern;
     public Matcher matcher;
     public static final String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -90,8 +92,13 @@ public class Customer
      * Method getAccount
      * @return Semua akun yang dimiliki suatu Customer
      */
-    public Account getAccount() {
-        return accounts;
+    public Account getAccount(char type) {
+        for (Account a: accounts ) {
+            if ( a.getAcctType() == type ) {
+                return a;
+            }   
+        }
+        return null;
     }
     
     /**
@@ -118,8 +125,71 @@ public class Customer
      * Method setAccount mendaftarkan akun yang dimiliki customer
      * @param accounts Akun Pelanggan Baru
      */
+    /*
     public void setAccount(Account accounts) {
         this.accounts = accounts;
+    }
+    */
+    /**
+     * Method addAccount Menambahkan objek akun ke suatu customer
+     * @param True or False
+     */
+    public boolean addAccount(double balance, char type) {
+        boolean accountAdded = false, sameType = false;
+        int index = -1;
+        if ( numAccount < 5 ) {
+            for (int i = indexArrayAccount; i < 4; i++) {
+                if (accounts[i] == null && index == -1) {
+                    index = i;
+                } else if (accounts[i] != null ) {
+                    if (accounts[i].getId().endsWith( Character.toString(type) ) ) {
+                        sameType = true;
+                        break;
+                    }
+                }
+            }
+            if (!sameType && index != -1){
+                accounts[index] = new Account (this, balance, type);
+                accountAdded = true;
+                numAccount++;
+                indexArrayAccount++;
+            }
+        }
+        return accountAdded;
+    }
+    
+    /**
+     * Method toString
+     */
+    public String toString() {
+        SimpleDateFormat ft = new SimpleDateFormat ("dd/MM/yyyy");
+        System.out.println("Customer ID   :   " + custId);
+        System.out.println("First Name    :   " + firstName);
+        System.out.println("Last Name     :   " + lastName);
+        System.out.println("City Address  :   " + cityAddress);
+        System.out.println("Stret Address :   " + streetAddress);
+        System.out.println("Email         :   " + email);
+        System.out.println("Phone Number  :   " + phoneNumber);
+        System.out.println("Zip / Postal  :   " + zipOrPostalCode);
+        System.out.println("DOB           :   " + ft.format(dateOfBirth));
+        System.out.println("Account       :");
+        for (Account a : accounts) {
+            if ( a!= null) {
+                switch (a.getAcctType()) {
+                    case 'S': System.out.println("          SAVINGS, " + a.getBalance());
+                              break;
+                    case 'O': System.out.println("          OVERDRAFT, " + a.getBalance());
+                              break;
+                    case 'I': System.out.println("          INVESTMENT, " + a.getBalance());
+                              break;
+                    case 'L': System.out.println("          LINEOFCREDIT, " + a.getBalance());
+                              break;
+                    default : System.out.println("          Kosong");
+                }
+            }
+        }
+        return "";
+        //return firstName +", " + lastName + ", " + DOB;
     }
     
     /**
