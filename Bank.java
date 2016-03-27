@@ -16,7 +16,7 @@ public class Bank
     private static BigDecimal creditRate, investmentRate, premiRate;
     public static int lastCustID, nextCustID, numOfCurrentCustomer, nextID;
     private String phone;
-    private static Date closeTime, startTime;
+    public static Date closeTime, startTime;
     public String website;
     public static final int MAX_CUSTOMERS;
     public static final String BANK_NAME = "JBANK", BANK_ADDRESS = "1234 JavaStreet, AnyCity, ThisState, 34567";

@@ -92,6 +92,7 @@ public class Customer
      * Method getAccount
      * @return Semua akun yang dimiliki suatu Customer
      */
+    /*
     public Account getAccount(char type) {
         for (Account a: accounts ) {
             if ( a.getAcctType() == type ) {
@@ -100,7 +101,7 @@ public class Customer
         }
         return null;
     }
-    
+    */
     /**
      * Method getCustomerId
      * @return Nomor Idenditas yang dimiliki suatu Customer
@@ -134,6 +135,7 @@ public class Customer
      * Method addAccount Menambahkan objek akun ke suatu customer
      * @param True or False
      */
+    /*
     public boolean addAccount(double balance, char type) {
         boolean accountAdded = false, sameType = false;
         int index = -1;
@@ -157,10 +159,11 @@ public class Customer
         }
         return accountAdded;
     }
-    
+    */
     /**
      * Method toString
      */
+    /*
     public String toString() {
         SimpleDateFormat ft = new SimpleDateFormat ("dd/MM/yyyy");
         System.out.println("Customer ID   :   " + custId);
@@ -191,7 +194,7 @@ public class Customer
         return "";
         //return firstName +", " + lastName + ", " + DOB;
     }
-    
+    */
     /**
      * Method getNumOfAccounts
      * @return Jumlah akun yang dimiliki suatu Customer

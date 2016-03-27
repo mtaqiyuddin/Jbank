@@ -115,7 +115,7 @@ public class Teller
                                 break;
                             }
                         } while(true);
-                        customers.addAccount(balance, acctType);
+                        //customers.addAccount(balance, acctType);
                         break;
                     }
                     else {
@@ -131,10 +131,10 @@ public class Teller
             }
           bank.printAllCustomers();
           customers = Bank.getCustomer(1000);
-          Account acc = new Account(customers,1000,'C');
-          System.out.println("Account Type: " + acc.getAcctType());
-          System.out.println("Balance     : " + acc.getBalance());
-          System.out.println("ID          : " + acc.getId());
+          //Account acc = new Account(customers,1000,'C');
+          //System.out.println("Account Type: " + acc.getAcctType());
+          //System.out.println("Balance     : " + acc.getBalance());
+          //System.out.println("ID          : " + acc.getId());
         }
     }
     
@@ -144,6 +144,7 @@ public class Teller
     public Teller() {
     }
     
+    /*
     public void newAccount() {
         Customer cust = new Customer();
         Account saving = new Account (cust, 1000, 'S');
@@ -181,7 +182,8 @@ public class Teller
         financeCharge += iC;
         System.out.println("Total Biaya: US$" + financeCharge);
     }
-    
+    */
+   
     public static double futureValue(double balance, double rate, double compound, double period) {
         BigDecimal bal = new BigDecimal (balance);
         BigDecimal r = new BigDecimal (rate);
@@ -216,7 +218,7 @@ public class Teller
      * @param min Satuan Menit
      */
     public static void setCloseTime(int year,int month,int day,int hour, int min) {
-        closeTime = new GregorianCalendar(year, month, day, hour, min).getTime();
+        Bank.closeTime = new GregorianCalendar(year, month, day, hour, min).getTime();
     }
     
     /**
@@ -225,7 +227,7 @@ public class Teller
      * @param min Satuan Menit
      */
     public static void setStartTime(int year,int month,int day, int hour, int min) {
-        startTime = new GregorianCalendar(year, month, day, hour, min).getTime();
+        Bank.startTime = new GregorianCalendar(year, month, day, hour, min).getTime();
     }
     
     /**
