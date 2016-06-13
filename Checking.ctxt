@@ -7,4 +7,5 @@ comment1.target=void\ resetMonthlyFee()
 comment1.text=\r\n\ Metode\ abstrak\ untuk\ mengecek\ biaya\ Checking\ Account\r\n
 comment2.params=
 comment2.target=double\ getMonthlyFee()
+comment2.text=\r\n\ Metode\ abstrak\ untuk\ mengecek\ biaya\ bulanan\r\n\ @return\ fee\r\n
 numComments=3

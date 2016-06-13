@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ATMWindowHandler()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ WindowHandler\r\n
+comment1.params=windowEvent
+comment1.target=void\ windowClosing(java.awt.event.WindowEvent)
+comment1.text=\r\n\ Method\ override\ untuk\ menampilkan\ pesan\ ketika\ window\ di-close\r\n\ @param\ windowEvent\ Event\r\n
+numComments=2

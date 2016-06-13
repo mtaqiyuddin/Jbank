@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=acct
+comment0.target=AccountTypeAlreadyExistsException(Account)
+comment0.text=\r\n\ Method\ Constructor\ AccountTypeAlreadyExistException\r\n\ @param\ c\ karakter\ account\r\n
+comment1.params=
+comment1.target=java.lang.String\ getMessage()
+comment1.text=\r\n\ Method\ accessor\ getMessage\r\n\ @return\ message\ pesan\ error\r\n
+numComments=2

@@ -2,14 +2,14 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.io.*;
 
 /**
- * 
- * 
+ * Kelas yang memodelkan Account Line of Credit
  * @author Muhammad Taqiyuddin
- * @version 27/3/2016
+ * @version 20/5/2016
  */
-public class LineOfCredit extends Checking {
+public class LineOfCredit extends Checking implements Serializable {
     private double creditBalance, creditLimit;
     
     /**
@@ -41,17 +41,14 @@ public class LineOfCredit extends Checking {
      * Method withdraw Menarik sejumlah Saldo dari Line-of-Credit Account
      * @param amount Jumlah Saldo
      */
-    public boolean withdraw (double amount) {
-        if ( ( balance + creditBalance >= amount)) {
-            if (balance >= amount) {
-                balance -= amount;
-            } else {
-                creditBalance -= (amount - balance);
-                balance = 0;
-            }
-            return true;
-        } else {
-            return false;
+    public void withdraw (double amount) throws AmountOverDrawnException{
+        if(amount > balance + creditBalance){
+            throw new AmountOverDrawnException(this);
+        } else if (amount > balance){
+            balance = 0;
+            creditBalance -= (amount - balance); 
+        }else{
+            balance = balance - amount;
         }
     }
     

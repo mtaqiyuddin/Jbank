@@ -1,11 +1,12 @@
+import java.io.*;
 
 /**
- * 
- * 
+ * Class OverDraftProtect adalah kelas tambahan dari Checking.
+ * Kelas ini akan memberikan limit credit untuk penarikan yang melebihi saldo Customer 
  * @author Muhammad Taqiyuddin
  * @version 27/3/2016
  */
-public class OverDraftProtect extends Checking {
+public class OverDraftProtect extends Checking implements Serializable {
     private Savings savingsAccount;
 
     /**
@@ -33,18 +34,17 @@ public class OverDraftProtect extends Checking {
      * Method withdraw Menarik sejumlah Saldo dari Overdraft Account
      * @param amount Jumlah Saldo
      */
-    public boolean withdraw (double amount) {
-        if ( ( balance + savingsAccount.getBalance() ) - amount >= 10) {
-            if (balance >= amount) {
-                balance -= amount;
-            } else {
-                savingsAccount.withdraw(amount - balance);
-                balance = 0;
-                feeAssessment();
-            }
-            return true;
-        } else {
-            return false;
+    public void withdraw (double amount) throws AmountOverDrawnException {
+        if(amount > balance + savingsAccount.getBalance() - 10){
+            throw new AmountOverDrawnException(this);
+        } else if (amount > balance){
+            balance = 0;
+            savingsAccount.withdraw(amount - balance);
+            feeAssessment();
+
+        }else{
+            balance = balance - amount;
+            feeAssessment();
         }
     }
 }

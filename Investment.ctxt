@@ -1,14 +1,11 @@
 #BlueJ class context
-comment0.params=args
-comment0.target=void\ main(java.lang.String[])
-comment1.params=cust\ amount\ months
-comment1.target=Investment(Customer,\ double,\ int)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Investment\r\n
-comment2.params=
-comment2.target=int\ sampleMethod()
-comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
-comment3.params=days
-comment3.target=void\ addDailyInterest(int)
-comment4.params=amount
-comment4.target=boolean\ withdraw(double)
-numComments=5
+comment0.params=cust\ amount\ months
+comment0.target=Investment(Customer,\ double,\ int)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Investment\r\n\ @param\ cust\ objeck\ kelas\ Customer\r\n\ @param\ amount\ jumlah\ saldo\r\n\ @param\ months\ bulan\r\n
+comment1.params=days
+comment1.target=void\ addDailyInterest(int)
+comment1.text=\r\n\ Method\ addDailyInterest\ mengitung\ bunga\ berdasarkan\ hari\r\n\ @param\ days\ hari\r\n
+comment2.params=amount
+comment2.target=void\ withdraw(double)
+comment2.text=\r\n\ Method\ withdraw\ mengambil\ uang\ dari\ akun\ \r\n\ @param\ amount\ jumlah\ yang\ diambil\r\n\ @Exception\ AmountOverDrawnException\ jika\ mengambil\ uang\ melebihi\ saldo\r\n
+numComments=3

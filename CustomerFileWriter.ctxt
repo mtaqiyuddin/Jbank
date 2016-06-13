@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=CustomerFileWriter()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ CustomerFileWriter\r\n
+comment1.params=customers
+comment1.target=void\ saveCustomers(java.util.SortedSet)
+comment1.text=\r\n\ Method\ saveCustomers\ untuk\ menuliskan\ info\ customer\ dari\ file\r\n\ @param\ customers\ dari\ SortedSet\ customer\r\n
+numComments=2

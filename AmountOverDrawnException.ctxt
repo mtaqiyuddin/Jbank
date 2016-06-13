@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=a
+comment0.target=AmountOverDrawnException(Account)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ AmountOverDrawnException\r\n\ @param\ a\ Account\r\n
+comment1.params=
+comment1.target=java.lang.String\ getMessage()
+comment1.text=\r\n\ Method\ accessor\ getMessage\r\n\ @return\ message\ pesan\ error\r\n
+numComments=2

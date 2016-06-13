@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=CustomerFileReader()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ CustomerFileWriter\r\n
+comment1.params=
+comment1.target=java.util.SortedSet\ readCustomers()
+comment1.text=\r\n\ Method\ readCustomer\ untuk\ membaca\ info\ customer\ dari\ file\r\n\ @return\ SortedSet\ customer\r\n
+numComments=2

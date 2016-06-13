@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.params=gui
+comment0.target=ATMButtonHandler(ATMGUI)
+comment0.text=\r\n\ Method\ ATMButtonHandler\r\n\ @param\ gui\ objek\ dari\ kelas\ ATMGUI\r\n
+comment1.params=e
+comment1.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment1.text=\r\n\ Method\ actionPerformed\r\n\ @param\ e\ objek\ dari\ ActionEvent\r\n
+comment2.params=
+comment2.target=void\ run()
+comment3.params=
+comment3.target=Account\ searchAccount()
+comment3.text=\r\n\ Method\ untuk\ mencari\ account\ sesuai\ input\ pada\ GUI\r\n\ @return\ a\ objeck\ dari\ kelas\ Account\ \r\n
+comment4.params=a\ amount
+comment4.target=void\ withdrawAction(Account,\ double)
+comment4.text=\r\n\ Method\ withdrawAction\r\n\ @param\ a\ Account\r\n\ @param\ amount\ Jumlah\ uang\ yang\ akan\ diambil\r\n
+comment5.params=a\ amount
+comment5.target=void\ depositAction(Account,\ double)
+comment5.text=\r\n\ Method\ depositAction\r\n\ @param\ a\ Account\r\n\ @param\ amount\ Jumlah\ uang\ yang\ akan\ disimpan\r\n
+numComments=6

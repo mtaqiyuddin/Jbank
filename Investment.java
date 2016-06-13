@@ -2,35 +2,26 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.io.*;
 
 /**
- * 
- * 
+ * Class Investment adalah kelas tambahan dari Saving.Kelas ini akan memberikan penanaman modal yang
+ * diserati dengan suk bunga yang sudah di tentukan
  * @author Muhammad Taqiyuddin
- * @version 27/3/2016
+ * @version 20/5/2016
  */
-public final class Investment extends Savings
+public final class Investment extends Savings implements Serializable
 {
-    // instance variables - replace the example below with your own
+    // instance variables
     private Date startDate, endDate;
     private int term;
     private double interestRate;
     
-    public static void main(String[] args) 
-    {
-        System.out.println("Nama : Muhammad Taqiyuddin");
-        System.out.println("ID : 1000");
-        System.out.println("Tanggal Lahir : 31/03/1995");
-        System.out.println("Alamat : Griya Lembah Depok, Depok, 16417");
-        System.out.println("Telepon : 085718714324");
-        System.out.println("Balance Savings awal : 500");
-        System.out.println("Balance Savings akhir: 511.6121");
-        System.out.println("Balance Interest awal : 1000");
-        System.out.println("Balance Interest akhir : 1047.12");
-    }
-    
     /**
      * Constructor for objects of class Investment
+     * @param cust objeck kelas Customer
+     * @param amount jumlah saldo
+     * @param months bulan
      */
     public Investment(Customer cust, double amount, int months)
     {
@@ -46,7 +37,6 @@ public final class Investment extends Savings
         }
         cal.add(Calendar.MONTH, localTerm);
         endDate = cal.getTime();
-
         if (term <= 6) {
             interestRate = 0.05;
         } else if (term > 6 && term <=12) {
@@ -55,19 +45,12 @@ public final class Investment extends Savings
             interestRate = 0.07;
         }
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod()
-    {
-        // put your code here
-        return 0;
-    }
     
+    /**
+     * Method addDailyInterest mengitung bunga berdasarkan hari
+     * @param days hari
+     */
+    @Override
     public void addDailyInterest(int days){
         double Days = (int)days;
         double A, period;
@@ -77,23 +60,23 @@ public final class Investment extends Savings
         balance = A;
     }
     
-    public boolean withdraw(double amount) {
-        
+    /**
+     * Method withdraw mengambil uang dari akun 
+     * @param amount jumlah yang diambil
+     * @Exception AmountOverDrawnException jika mengambil uang melebihi saldo
+     */
+    @Override
+    public void withdraw(double amount) throws AmountOverDrawnException {
         if (balance - amount >= 100) {
-            if (Calendar.getInstance().before(endDate)) {
-                if ( (balance * 0.8) - amount >= 100 ) {
-                    balance *= 0.8;
-                    balance -= amount;
-                    return true;
-                } else {
-                    return false;
-                }
-                
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
+           if (Calendar.getInstance().before(endDate)) {
+               if ( (balance * 0.8) - amount >= 100 ) {
+                   balance *= 0.8;
+                   balance -= amount;
+               } 
+           } 
+       } 
+       else {
+           throw new AmountOverDrawnException(this);
+       }
+   } 
 }

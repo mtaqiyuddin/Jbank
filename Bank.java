@@ -7,25 +7,26 @@ import java.text.SimpleDateFormat;
 /**
  * Class bank
  * @author Muhammad Taqiyuddin 
- * @version 19/02/2016
+ * @version 20/5/2016
  */
 public class Bank
 {
-    // instance variables - replace the example below with your own
+    // instance variables
     private static double creditInterestRate, investmentInterestRate, premiumInterestRate;
     private static BigDecimal creditRate, investmentRate, premiRate;
     public static int lastCustID, nextCustID, numOfCurrentCustomer, nextID;
-    private String phone;
+    private static String phone;
     public static Date closeTime, startTime;
-    public String website;
-    public static final int MAX_CUSTOMERS;
+    public static String website;
+    public static final int MAX_CUSTOMERS = 4;
     public static final String BANK_NAME = "JBANK", BANK_ADDRESS = "1234 JavaStreet, AnyCity, ThisState, 34567";
-    static {
+    
+    /*static {
         Scanner s = new Scanner(System.in);
         System.out.print("\nMasukkan jumlah maksimum customer: ");
         int x= s.nextInt();
         MAX_CUSTOMERS = x;
-    }
+    }*/
     
     private static Customer[] Customers = new Customer[MAX_CUSTOMERS];
     
@@ -40,27 +41,24 @@ public class Bank
      * @return True or False
      */
     public static boolean addCustomer (Customer customer) {
-        for (int i = 0; i < Customers.length; i++){
-            if (Customers[i] == null) {
-                Customers[i] = customer;
-                return true;
-            } 
+        boolean customerAdded = false;
+        int i = 0;
+        if(numOfCurrentCustomer <= Customers.length) {
+            int notUsed = -1;
+            for(i = 0; i < Customers.length; i++) {
+                if(Customers[i] == null && notUsed == -1) {
+                    notUsed = i;
+                }
+                else {
+                    customerAdded = false;
+                }
+            }
+            if(notUsed != -1) {
+                Customers[notUsed] = customer;
+                customerAdded = true;
+            }
         }
-        return false;
-    }
-    
-    /**
-     * Method getCustomer Mendapatkan objek customer berdasarkan ID
-     * @param custID Customer ID
-     * @return Objek Customer atau Null
-     */
-    public static Customer getCustomer (int custID) {
-        for (int i = 0; i < Customers.length; i++){
-            if (Customers[i].getCustomerId() == custID) {
-                return Customers[i];
-            } 
-        }
-        return null;
+        return customerAdded;
     }
     
     /**
@@ -70,32 +68,10 @@ public class Bank
     public static int getMaxNumOfCustomers () {
         return MAX_CUSTOMERS;
     }
-    
-    /**
-     * Method getAddress
-     */
-    /*public static String getAddress()
-    {
-        return null;
-    }*/
-        
-    /**
-     * Method getMaxCustomers
-     */
-    /*public static int getMaxCustomers()
-    {
-        return MAX_CUSTOMERS;
-    }*/
-    
-    /**
-     * Method getName
-     */
-    /*public static String getName()
-    {
-        return null;
-    }*/
+
     /**
      * Method getCreditRate
+     * @return rate kredit
      */
     public static double getCreditRate()
     {
@@ -104,6 +80,7 @@ public class Bank
     
     /**
      * Method getInvestmentRate
+     * @return rate investment
      */
     public static double getInvestmentRate()
     {
@@ -112,6 +89,7 @@ public class Bank
     
     /**
      * Method getPremiumRate
+     * @return rate premi
      */
     public static double getPremiumRate() {
         return premiumInterestRate;
@@ -119,6 +97,7 @@ public class Bank
     
      /**
      * Method getHoursOfOperation
+     * @return waktu mulai sampai waktu selesai
      */
     public static String getHoursOfOperation()
     {
@@ -140,6 +119,24 @@ public class Bank
             closeTime = this.closeTime;
             return false;
         }
+    }
+    
+    /**
+     * Method accessor getCustomer
+     * @param custID nomor ID customer
+     * @return Customer
+     */
+    public static Customer getCustomer(int custID)
+    {
+        Customer c = null;
+        int i = 0;
+        for(i = 0; i < Customers.length; i++) {
+            if(Customers[i] != null && custID == Customers[i].getCustomerId()) {
+                c = Customers[i];
+                return c;
+            }
+        }
+        return c;
     }
     
     /**
@@ -179,6 +176,7 @@ public class Bank
     
     /**
      * Method getLastID
+     * @return id terakhir
      */
     public static int getLastID()
     {
@@ -195,34 +193,40 @@ public class Bank
     
     /**
      * Method getNextID
+     * @return id selanjutnya
      */
     public static int getNextID() {
-        if (nextCustID == 0)  {
+        int lokal = 0;
+        if (nextCustID == 0){
             lastCustID = 1000;
-            nextCustID = 1000;
-            numOfCurrentCustomer = 1;
-            return nextCustID;
-        }
-        else if (numOfCurrentCustomer == MAX_CUSTOMERS){
-            return nextCustID;
-        }
-        else {
-            lastCustID = nextCustID;
-            nextCustID = lastCustID + 1;
+            lokal = 1000;
             numOfCurrentCustomer++;
-            return nextCustID;
+            nextCustID = lokal;
+            return lokal;
+        }
+        else{
+            if (numOfCurrentCustomer == MAX_CUSTOMERS){
+                lokal = 0;
+                nextCustID = lokal;
+                return lokal;
+            }
+            lastCustID = nextCustID;
+            lokal = lastCustID + 1;
+            numOfCurrentCustomer++;
+            nextCustID = lokal;
+            return lokal;
         }
     }
     
     public static String getWebsite() {
-        return null;
+        return website;
     }
     
     /**
      * Method getPhone
      */
     public static String getPhone() {
-        return null;
+        return phone;
     }
     
     /**
@@ -248,7 +252,9 @@ public class Bank
     
     public void printAllCustomers() {
         for (Customer c : Customers) {
-            System.out.println(c);
+            if (c != null){
+                System.out.println(c);
+            }
         }
     }
 }

@@ -1,48 +1,25 @@
 import java.math.BigDecimal;
 import java.lang.Math;
 import java.math.MathContext;
+import java.io.Serializable;
 
 /**
- * Class Account menghasilkan object Account dan terdiri dari beberapa method
+ * Class abstrak Account menangani akun
  * @author Muhammad Taqiyuddin 
- * @version 19/02/2016
+ * @version 20/5/2016
  */
 public abstract class Account
 {
-    // instance variables - replace the example below with your own
-    public char acctType;
+    // instance variables
     public double balance;
     public String id;
-    protected int numOfDays;
     
     /**
-     * Method Constructor Account
+     * Method toString untuk mendapatkan string dari variable
+     * @return ID dari akun yang bersangkutan
      */
-    public Account() {
-    }
-    
-    /**
-     * Method Constructor Account
-     * @param type Tipe dari Akun
-     * @param amount Jumlah Nilai
-     */
-    /*
-    public Account(Customer cust, double amount, char type) {
-        acctType = type;
-        balance = amount;
-        id = cust.getCustomerId()+ "" + type;
-    }
-    */
-    public String toString() {
-        System.out.println("Account Type  :   " + acctType);
-        System.out.println("ID            :   " + id);
-        System.out.println("Balance       :   " + balance);
-        return "";
-    }
-    
-    public String toString(String ID) {
-        System.out.println("ID            :   " + id);
-        return id;
+    public String toString(int ID) {
+        return String.format(ID + "");
     }
     
     /**
@@ -86,8 +63,15 @@ public abstract class Account
      * Method withdraw Mengambil sejumlah uang dari suatu akun 
      * @param amount Jumlah Nilai Kas
      */
-    public abstract boolean withdraw(double amount);
+    public abstract void withdraw(double amount) throws AmountOverDrawnException;
 
+    /**
+     * Method futureValue digunakan untuk menghitung nilai uang di masa depan
+     * @param balance jumlah balance
+     * @param rate nilai bunga
+     * @param compound nilai gabungan
+     * @param period lama uang disimpan
+     */
     protected static double futureValue(double balance, double rate, double compound, double period) {
         MathContext mc = new MathContext(3);
         BigDecimal bal = new BigDecimal (balance);
